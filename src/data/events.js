@@ -1,0 +1,15 @@
+export const actsEvents = [
+  { name: 'HACKTOBERFEST', year: '2026', description: 'A national-level hackathon built around creative problem solving, collaboration and hours of code.' },
+  { name: 'BRAINwAVE', year: '2026', description: 'A hands-on ACTS experience bringing students together to explore ideas and technology.' },
+  { name: 'GEEK VERSE', year: '2026', description: 'A celebration of the people, projects and conversations shaping the student tech community.' },
+  { name: 'VibeClash', year: '2026', description: 'An energetic campus event designed around participation, connection and friendly competition.' },
+  { name: 'CodeZen 2.0', year: '2026', description: 'A focused coding experience for sharpening skills and building with the community.' },
+  { name: "Thinking Prompt by Master's Union", year: '2026', description: 'A workshop on prompt engineering and using AI to build intelligent tools.' },
+  { name: 'Sony Photothon', year: '2026', description: 'A collaboration with Sony focused on visual storytelling, creativity and photography.' },
+  { name: 'ML WORKSHOP BY MICROSOFT', year: '2024', description: 'An online session introducing the fundamentals of artificial intelligence and machine learning.' },
+  { name: 'SNAP-AR WORKSHOP', year: '2024', description: 'A hands-on session where participants built AR experiences with Lens Studio and GenAI effects.' },
+  { name: 'WhatsApp - AI Chatbot Session', year: '2025', description: 'A practical workshop on building a real-world AI-powered WhatsApp chatbot from scratch.' },
+  { name: 'Swiggy Reward Program', year: '2025', description: 'An on-campus event using challenges and activities to reward student participation.' },
+  { name: 'Speaker Session by Market Mafia', year: '2025', description: 'A session on personal branding, market branding and discovering strengths through real experiences.' },
+  { name: '31 DEC', year: '2025', description: 'A community celebration bringing ACTS students together to close the year.' },
+];

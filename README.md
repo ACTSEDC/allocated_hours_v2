@@ -1,16 +1,23 @@
-# React + Vite
+# ACTS EDC Hour Allocation Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React/Vite frontend for looking up ACTS EDC participation hours from Google Sheets.
 
-Currently, two official plugins are available:
+## Google Sheets + Apps Script setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Open the linked spreadsheet and choose **Extensions → Apps Script**. If that page does not open, go directly to [script.google.com](https://script.google.com), click **New project**, and continue there.
+2. Copy the contents of [`google-apps-script/Code.gs`](./google-apps-script/Code.gs) into the Apps Script editor. The script already contains the spreadsheet ID, so it works as a standalone project too.
+3. Confirm the first row contains these headers (the existing sheet already does): `Enrollment Number`, `Name`, `EVENT NAME`, `ROLE`, `HOURS ALLOTED`, `Branch`, `Year`.
+4. Deploy → New deployment → Web app. Set **Execute as** to yourself and **Who has access** to **Anyone**, then copy the `/exec` URL.
+5. Create `.env.local` in this project with `VITE_SHEET_URL=the-copied-exec-url`.
+6. Run `npm install`, then `npm run dev` or `npm run build`.
 
-## React Compiler
+The site reads the latest sheet data whenever a student searches. Add or update rows in Sheets; no frontend data file needs to be changed.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Frontend
 
-## Expanding the Oxlint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+The Events page intentionally uses text-only cards and mirrors the event names currently listed on the ACTS website. Upcoming events are not included.

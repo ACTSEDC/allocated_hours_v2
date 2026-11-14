@@ -11,5 +11,14 @@ export async function searchRecords({ enrollment }) {
 
   const data = await res.json();
   if (data.error) throw new Error(data.error);
-  return data;
+  const results = Array.isArray(data.results) ? data.results : [];
+  return {
+    ...data,
+    results: results.map((row) => ({
+      ...row,
+      event: row.event ?? row['EVENT NAME'] ?? row.eventName ?? '',
+      role: row.role ?? row.ROLE ?? '',
+      hours: row.hours ?? row['HOURS ALLOTED'] ?? row['HOURS ALLOCATED'] ?? 0,
+    })),
+  };
 }

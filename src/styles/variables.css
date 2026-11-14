@@ -1,31 +1,34 @@
 :root {
   /* Colors */
-  --sidebar-bg: #111827;          /* Neutral dark slate */
+  --sidebar-bg: #0b0718;
   --sidebar-border: #1f2937;
   --sidebar-hover: #1f2937;
-  --sidebar-active: #374151;
-  --sidebar-text: #9ca3af;
+  --sidebar-active: #27213b;
+  --sidebar-text: #a9a1bd;
   --sidebar-text-active: #ffffff;
 
-  --bg-main: #f9fafb;             /* Enterprise light gray */
-  --bg-card: #ffffff;
-  --bg-hover: #f3f4f6;
+  --bg-main: #090611;
+  --bg-card: #151021;
+  --bg-hover: #211832;
 
-  --accent-blue: #2563eb;
-  --accent-blue-hover: #1d4ed8;
-  --accent-blue-subtle: #eff6ff;
+  --accent-blue: #7c3aed;
+  --accent-blue-hover: #6d28d9;
+  --accent-blue-subtle: #241643;
+  --accent-purple: #7c3aed;
+  --accent-purple-hover: #6d28d9;
+  --accent-purple-subtle: #241643;
 
-  --text-primary: #111827;        /* Crisp dark gray */
-  --text-secondary: #4b5563;      /* Mid gray */
-  --text-muted: #6b7280;          /* Secondary gray */
+  --text-primary: #f8f5ff;
+  --text-secondary: #c5bbd8;
+  --text-muted: #9086a6;
 
-  --border-color: #e5e7eb;        /* Standard 1px neutral border */
-  --border-dark: #d1d5db;
+  --border-color: #2b2140;
+  --border-dark: #46365e;
 
   --status-success: #15803d;
   --status-success-bg: #f0fdf4;
   --status-error: #b91c1c;
-  --status-error-bg: #fef2f2;
+  --status-error-bg: #321724;
 
   /* Typography & Compact Spacing */
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -35,5 +38,5 @@
   --radius-lg: 6px;
 
   --shadow-none: none;
-  --shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-subtle: 0 18px 50px rgba(0, 0, 0, .22);
 }

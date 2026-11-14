@@ -1,10 +1,11 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { searchRecords } from './services/api';
 import EmptyState from './components/EmptyState';
 import Navbar from './components/Navbar';
 import PageContent from './components/PageContent';
 import Sidebar from './components/Sidebar';
 import StudentSummary from './components/StudentSummary';
+import AnimatedBackground from './components/AnimatedBackground';
 import './App.css';
 
 const pageTitles = {
@@ -20,6 +21,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [activePage, setActivePage] = useState('overview');
+  const enrollmentInputRef = useRef(null);
 
   const results = useMemo(
     () => (Array.isArray(record?.results) ? record.results : []),
@@ -33,6 +35,7 @@ function App() {
     (sum, result) => sum + (Number(result.hours) || 0),
     0,
   );
+  const hasSearchablePage = activePage === 'hours' || activePage === 'all-records';
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -57,6 +60,7 @@ function App() {
 
   return (
     <main className="app-layout">
+      <AnimatedBackground />
       <Sidebar
         activePage={activePage}
         onPageChange={setActivePage}
@@ -70,10 +74,17 @@ function App() {
           isLoading={isLoading}
           onEnrollmentChange={setEnrollment}
           onSubmit={handleSubmit}
+          inputRef={enrollmentInputRef}
         />
-        <div className="page-content">
-          {!record ? (
-            <EmptyState error={error} />
+        <div className="page-content page-transition" key={activePage}>
+          {activePage === 'events' ? (
+            <PageContent activePage="events" />
+          ) : !record ? (
+            <EmptyState
+              error={error}
+              isWelcome={!hasSearchablePage}
+              onStartSearch={() => enrollmentInputRef.current?.focus()}
+            />
           ) : (
             <>
               {error && <p className="message error">{error}</p>}
@@ -81,6 +92,8 @@ function App() {
                 name={record.name}
                 enrollment={enrollment}
                 totalHours={totalHours}
+                branch={record.branch}
+                year={record.year}
               />
               <PageContent
                 activePage={activePage}
@@ -89,6 +102,8 @@ function App() {
                 totalHours={totalHours}
                 enrollment={enrollment}
                 name={record.name}
+                branch={record.branch}
+                year={record.year}
               />
             </>
           )}
